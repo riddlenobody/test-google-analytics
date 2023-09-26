@@ -5,5 +5,5 @@ COPY . .
 RUN npm i
 RUN npm run build
 
-EXPOSE 8080
+EXPOSE 3000
 CMD ["npm", "run", "start"]
