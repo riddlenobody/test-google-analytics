@@ -76,15 +76,19 @@ export default function Home() {
         url: 'https://www.googletagmanager.com/gtag/js?id=G-J71HHRH64C',
         tryTimes: 2,
       })
-      function gtag(...props: any[]) { (window as any).dataLayer.push(...props) }
+      function gtag() {
+        (window as any).dataLayer.push(arguments)
+      }
 
       if ((window as any).dataLayer) {
-        (window as any).dataLayer = (window as any).dataLayer || []
+        // @ts-ignore
         gtag('js', new Date())
+        // @ts-ignore
         gtag('config', 'G-J71HHRH64C')
 
         setTimeout(() => {
           console.log('test event')
+          // @ts-ignore
           gtag('event', 'pageview', {
             'app_name': 'myAppName',
             'screen_name': 'Home'
